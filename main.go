@@ -49,8 +49,10 @@ func (p *ParkingIOT) status() {
 }
 
 func main() {
+	// Init size of parking iot
 	parkingIOT := create_parking_iot(6)
-	// Example usage
+
+	// Command
 	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-1234"))
 	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-9999"))
 	fmt.Println(parkingIOT.parkVehicle("KA-01-BB-0001"))
