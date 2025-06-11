@@ -16,7 +16,7 @@ func create_parking_iot(size int) *ParkingIOT {
 	}
 }
 
-func (p *ParkingIOT) parkVehicle(vehicleID string) string {
+func (p *ParkingIOT) park(vehicleID string) string {
 	for i := 0; i < len(p.vehicles); i++ {
 		if p.vehicles[i] == nil {
 			p.vehicles[i] = &Vehicle{vehicleID: vehicleID}
@@ -26,7 +26,7 @@ func (p *ParkingIOT) parkVehicle(vehicleID string) string {
 	return "Sorry, parking iot is full"
 }
 
-func (p *ParkingIOT) removeVehicle(vehicleID string, hours int) string {
+func (p *ParkingIOT) leave(vehicleID string, hours int) string {
 	for i := 0; i < len(p.vehicles); i++ {
 		if p.vehicles[i] != nil && p.vehicles[i].vehicleID == vehicleID {
 			p.vehicles[i] = nil
@@ -53,21 +53,21 @@ func main() {
 	parkingIOT := create_parking_iot(6)
 
 	// Command
-	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-1234"))
-	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-9999"))
-	fmt.Println(parkingIOT.parkVehicle("KA-01-BB-0001"))
-	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-7777"))
-	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-2701"))
-	fmt.Println(parkingIOT.parkVehicle("KA-01-HH-3141"))
-	fmt.Println(parkingIOT.removeVehicle("KA-01-HH-3141", 4))
+	fmt.Println(parkingIOT.park("KA-01-HH-1234"))
+	fmt.Println(parkingIOT.park("KA-01-HH-9999"))
+	fmt.Println(parkingIOT.park("KA-01-BB-0001"))
+	fmt.Println(parkingIOT.park("KA-01-HH-7777"))
+	fmt.Println(parkingIOT.park("KA-01-HH-2701"))
+	fmt.Println(parkingIOT.park("KA-01-HH-3141"))
+	fmt.Println(parkingIOT.leave("KA-01-HH-3141", 4))
 	parkingIOT.status()
-	fmt.Println(parkingIOT.parkVehicle("KA-01-P-333"))
-	fmt.Println(parkingIOT.parkVehicle("DL-12-AA-9999"))
-	fmt.Println(parkingIOT.removeVehicle("KA-01-HH-1234", 4))
-	fmt.Println(parkingIOT.removeVehicle("KA-01-BB-0001", 6))
-	fmt.Println(parkingIOT.removeVehicle("DL-12-AA-9999", 2))
-	fmt.Println(parkingIOT.parkVehicle("KA-09-HH-0987"))
-	fmt.Println(parkingIOT.parkVehicle("CA-09-IO-1111"))
-	fmt.Println(parkingIOT.parkVehicle("KA-09-HH-0123"))
+	fmt.Println(parkingIOT.park("KA-01-P-333"))
+	fmt.Println(parkingIOT.park("DL-12-AA-9999"))
+	fmt.Println(parkingIOT.leave("KA-01-HH-1234", 4))
+	fmt.Println(parkingIOT.leave("KA-01-BB-0001", 6))
+	fmt.Println(parkingIOT.leave("DL-12-AA-9999", 2))
+	fmt.Println(parkingIOT.park("KA-09-HH-0987"))
+	fmt.Println(parkingIOT.park("CA-09-IO-1111"))
+	fmt.Println(parkingIOT.park("KA-09-HH-0123"))
 	parkingIOT.status()
 }
