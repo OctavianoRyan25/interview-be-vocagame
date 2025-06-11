@@ -16,27 +16,27 @@ func create_parking_iot(size int) *ParkingIOT {
 	}
 }
 
-func (p *ParkingIOT) park(vehicleID string) string {
+func (p *ParkingIOT) park(car_number string) string {
 	for i := 0; i < len(p.vehicles); i++ {
 		if p.vehicles[i] == nil {
-			p.vehicles[i] = &Vehicle{vehicleID: vehicleID}
+			p.vehicles[i] = &Vehicle{vehicleID: car_number}
 			return "Allocated slot number: " + fmt.Sprint(i+1)
 		}
 	}
 	return "Sorry, parking iot is full"
 }
 
-func (p *ParkingIOT) leave(vehicleID string, hours int) string {
+func (p *ParkingIOT) leave(car_number string, hours int) string {
 	for i := 0; i < len(p.vehicles); i++ {
-		if p.vehicles[i] != nil && p.vehicles[i].vehicleID == vehicleID {
+		if p.vehicles[i] != nil && p.vehicles[i].vehicleID == car_number {
 			p.vehicles[i] = nil
 			if hours <= 2 {
-				return "Registration number " + vehicleID + " with Slot Number " + fmt.Sprint(i+1) + " is free with Charge $" + fmt.Sprint(hours*10)
+				return "Registration number " + car_number + " with Slot Number " + fmt.Sprint(i+1) + " is free with Charge $" + fmt.Sprint(hours*10)
 			}
-			return "Registration number " + vehicleID + " with Slot Number " + fmt.Sprint(i+1) + " is free with Charge $" + fmt.Sprint((hours-1)*10)
+			return "Registration number " + car_number + " with Slot Number " + fmt.Sprint(i+1) + " is free with Charge $" + fmt.Sprint((hours-1)*10)
 		}
 	}
-	return "Registration number " + vehicleID + " not found"
+	return "Registration number " + car_number + " not found"
 }
 
 func (p *ParkingIOT) status() {
