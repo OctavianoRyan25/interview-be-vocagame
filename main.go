@@ -23,7 +23,7 @@ func (p *ParkingIOT) parkVehicle(vehicleID string) string {
 			return "Allocated slot number: " + fmt.Sprint(i+1)
 		}
 	}
-	return "Sorry, parking lot is full"
+	return "Sorry, parking iot is full"
 }
 
 func (p *ParkingIOT) removeVehicle(vehicleID string, hours int) string {
